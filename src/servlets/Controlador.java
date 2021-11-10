@@ -12,7 +12,7 @@ public class Controlador extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private static final String BRASIL= "Brasil";
-	private static final String MEXICO= "México";
+	private static final String MEXICO= "Mexico";
 
 	private static final String[] PAISES= {BRASIL, MEXICO};
 
@@ -24,22 +24,38 @@ public class Controlador extends HttpServlet {
 		String acao= request.getServletPath();
 
 		if(acao.equalsIgnoreCase("/Controlador/paises"))
-			apresentaEtapaPaises(request, response);
+			apresentarEtapaPaises(request, response);
 
 		if(acao.equalsIgnoreCase("/Controlador/estados"))
-			apresentaEtapaEstados(request, response);
-
+			apresentarEtapaEstados(request, response);
 	}	
 
-	private void apresentaEtapaPaises(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	private void apresentarEtapaPaises(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		request.setAttribute("paises", PAISES);
 		request.getRequestDispatcher("/index.jsp").forward(request, response);
 	}
 
-	private void apresentaEtapaEstados(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+	private void apresentarEtapaEstados(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
+		String pais= request.getParameter("pais");
+		String[] estados= null;
+		String resposta= "";
+	
+		if(pais != null) {
+			if(pais.equalsIgnoreCase(BRASIL))
+				estados= ESTADOS_BRASIL;
+
+			if(pais.equalsIgnoreCase(MEXICO))
+				estados= ESTADOS_MEXICO;	
+			
+			for(int i=0; i<estados.length; i++)
+				resposta+= estados[i] + ";";
+		}
+		
+		response.setContentType("text/html; charset=ISO-8859-1");
+		response.getWriter().write(resposta);
+		response.flushBuffer();
 	}
 
 	private static String[] iniciarEstadosBrasil() {
