@@ -23,17 +23,18 @@ public class Controlador extends HttpServlet {
 
 		String acao= request.getServletPath();
 
-		if(acao == "/Controlador/paises")
+		if(acao.equalsIgnoreCase("/Controlador/paises"))
 			apresentaEtapaPaises(request, response);
 
-		if(acao == "/Controlador/estados")
+		if(acao.equalsIgnoreCase("/Controlador/estados"))
 			apresentaEtapaEstados(request, response);
 
 	}	
 
-	private void apresentaEtapaPaises(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-
+	private void apresentaEtapaPaises(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		request.setAttribute("paises", PAISES);
+		request.getRequestDispatcher("/index.jsp").forward(request, response);
 	}
 
 	private void apresentaEtapaEstados(HttpServletRequest request, HttpServletResponse response) {
