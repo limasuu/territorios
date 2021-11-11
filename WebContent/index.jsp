@@ -7,11 +7,12 @@
 		<title>Territórios</title>
 		
 		<script type="text/javascript">
+		
 			function buscarEstados(){
 				
 				var ajax= new XMLHttpRequest();
 				
-				var url= "/territorios/Controlador/estados"
+				var url= "/territorios/Controlador/estados";
 				url+= "?pais=" + document.getElementById("campo-pais").value;
 				
 				ajax.onreadystatechange= function(){
@@ -29,7 +30,29 @@
 			
 				ajax.open("GET", url, true);
 				ajax.send();
-			}			
+			}		
+			
+			function buscarDados(){
+				
+				var ajax= new XMLHttpRequest();
+				
+				var url="/territorios/Controlador/dadosEstado";
+				url+="?pais=" + document.getElementById("campo-pais").value;
+				url+="&estado=" + document.getElementById("campo-estado").value;
+				
+				ajax.onreadystatechange= function(){
+					if(ajax.readyState == 4 && ajax.status == 200){
+						
+						var dados= ajax.responseText;
+						var campoDados= document.getElementById("campo-dados");
+						
+						campoDados.value= dados;
+					}					
+				};
+				
+				ajax.open("GET", url, true);
+				ajax.send();
+			}
 			
 		</script>
 	</head>
@@ -50,15 +73,15 @@
 			</div>
 			
 			<div class="div-estado">
-				<select id="campo-estado" onchange="buscarCidades()">
+				<select id="campo-estado" onchange="buscarDados()">
 					<c:forEach var="estado" items="${estados}">
 						<option value="${estado}">${estado}</option>
 					</c:forEach>
 				</select>
 			</div>
 			
-			<div class="div-cidade">
-			
+			<div class="div-dados-estado">
+				<textarea id="campo-dados"></textarea>
 			</div>
 		
 		
