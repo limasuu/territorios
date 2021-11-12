@@ -52,7 +52,7 @@ public class Controlador extends HttpServlet {
 		String[] estados= null;
 		String resposta= "";
 
-		if(pais != null) {
+		if(pais != null && !pais.equalsIgnoreCase("Selecione")) {
 			if(pais.equalsIgnoreCase(BRASIL))
 				estados= ESTADOS_BRASIL;
 
@@ -74,7 +74,7 @@ public class Controlador extends HttpServlet {
 		String estado= request.getParameter("estado");
 		String resposta= "";
 		
-		if(pais != null && estado != null) {
+		if(pais != null && estado != null && !pais.equalsIgnoreCase("Selecione") && !estado.equalsIgnoreCase("Selecione")) {
 			Estado dados_estado= null;
 			
 			if(pais.equalsIgnoreCase(BRASIL))

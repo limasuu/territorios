@@ -6,6 +6,28 @@
 		<meta charset="UTF-8">
 		<title>Territórios</title>
 		
+		<style type="text/css">
+			body{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			
+			main{
+				display: flex;
+				width: 60%;
+				justify-content: space-around;
+			}
+			
+			textarea{	
+				width: 250px;
+				height: 150px;
+				
+				padding: 15px;
+				resize: none;
+			}
+		</style>
+		
 		<script type="text/javascript">
 		
 			function buscarEstados(){
@@ -65,7 +87,10 @@
 		<main>
 		
 			<div class="div-pais">
+				País
 				<select id="campo-pais" onchange="buscarEstados()">
+					<option>Selecione</option>
+				
 					<c:forEach var="pais" items="${paises}">
 						<option value="${pais}">${pais}</option>
 					</c:forEach> 
@@ -73,7 +98,10 @@
 			</div>
 			
 			<div class="div-estado">
+				Estado
 				<select id="campo-estado" onchange="buscarDados()">
+					<option>Selecione</option>
+					
 					<c:forEach var="estado" items="${estados}">
 						<option value="${estado}">${estado}</option>
 					</c:forEach>
