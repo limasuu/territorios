@@ -61,7 +61,8 @@ public class Controlador extends HttpServlet {
 
 			for(int i=0; i<estados.length; i++)
 				resposta+= estados[i] + ";";
-		}
+		}else
+			resposta= "Selecione";
 
 		response.setContentType("text/html; charset=ISO-8859-1");
 		response.getWriter().write(resposta);
@@ -105,7 +106,7 @@ public class Controlador extends HttpServlet {
 
 	private static String[] iniciarEstadosMexico() {
 
-		return new String[]{"Aguascalientes", "Baja California", "Baja California", "Campeche", "Chiapas", 
+		return new String[]{"Aguascalientes", "Baja California", "Baja California Sur", "Campeche", "Chiapas", 
 				"Chihuahua", "Coahuila", "Colima", "Durango", "Guanajuato", "Guerrero", "Hidalgo", "Jalisco", 
 				"Mexico", "Michoacan", "Morelos", "Nayarit", "Nuevo Leon", "Oaxaca", "Puebla", "Queretaro", 
 				"Quintana Roo", "San Luis Potosi", "Sinaloa", "Sonora", "Tabasco", "Tamaulipas", "Tlaxcala", 
@@ -209,10 +210,10 @@ public class Controlador extends HttpServlet {
 		estado= new Estado("Aguascalientes", "Mexico", "AGS", "Aguascalientes", 5.618);
 		estados.put(estado.getNome(), estado);
 		
-		estado= new Estado("Baja California Sur", "Mexico", "BC", "Mexicali", 71.446);
+		estado= new Estado("Baja California", "Mexico", "BC", "Mexicali", 71.446);
 		estados.put(estado.getNome(), estado);
 		
-		estado= new Estado("Baja California", "Mexico", "BCS", "La Paz", 73.922);
+		estado= new Estado("Baja California Sur", "Mexico", "BCS", "La Paz", 73.922);
 		estados.put(estado.getNome(), estado);
 		
 		estado= new Estado("Campeche", "Mexico", "CAMP", "Campeche", 57.924);

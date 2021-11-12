@@ -46,7 +46,9 @@
 						campoEstados.length= 0;
 						for(var i=0; i<estados.length; i++)
 							if(estados[i].length > 0)
-								campoEstados.options[campoEstados.length]= new Option(estados[i]);			
+								campoEstados.options[campoEstados.length]= new Option(estados[i]);	
+						
+						document.getElementById("campo-dados").value= "";
 					}		
 				};
 			
